@@ -38,6 +38,16 @@
   border: 2px solid white;
  
 }
+.b2
+{
+  margin-left: 10px;
+  margin-top: -20px;
+}
+.ib
+{
+  height:30px;
+  width:30px;
+}
 .pro4
 {
   margin-top: 5px;
@@ -80,6 +90,7 @@
 }
 .con8
 {
+  margin-top: 10px;
 
   margin-left: 10px;
   

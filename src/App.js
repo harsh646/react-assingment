@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Header from "./MyComponents/Header";
 import Lists from "./MyComponents/Lists";
@@ -7,15 +7,15 @@ import React, { useState } from 'react';
 
 function App() {
   const onDelete=(list)=>{
-    console.log("deleted on",list)
+   
     setLists(lists.filter((e)=>{
       return e!==list;
     }))
   }
   const addList=(name)=>{
-    console.log("add",name)
+    
     let sno
-    if(lists.length==0)
+    if(lists.length===0)
     {
       sno=0
 
@@ -49,13 +49,28 @@ function App() {
       des:""
     }
   ])
+  const [searchTerm, setSearchTerm]=useState("")
+  const [searchResults, setSearchResults]=useState([])
+  const searchHandler=(searchTerm)=>{
+  setSearchTerm(searchTerm)
+  if(searchTerm!==""){
+    const newList=lists.filter((list)=>{
+      return Object.values(list).join(" ").toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+    })
+    setSearchResults(newList)
+  }
+  else{
+    setSearchResults(lists)
+  }
+
+  }
 
   return (
   <>
 
   <Header/>
-  <AddList addList={addList}/>
-  <Lists lists={lists} onDelete={onDelete}/>
+  <AddList addList={addList} />
+  <Lists lists={searchTerm.length<1 ? lists:searchResults} onDelete={onDelete} term={searchTerm} searchKeyword={searchHandler}/>
   </>
   );
 }

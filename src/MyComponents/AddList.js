@@ -16,6 +16,7 @@ export default function AddList({addList}) {
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label"></label>
           <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} className="form-control" id="name" placeholder='NAME' />
+          
          
         </div>
         <div>
